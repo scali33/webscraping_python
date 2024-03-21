@@ -12,7 +12,7 @@ class BookParser:
 
 
     def __str__(self):
-        return f'<Book {self.name} costing {self.price}$ with rating of {self.rating} Stars>\n'
+        return f'<Book {self.name} costing {self.price}$ with rating of ({self.rating} Stars>)\n'
     
     @property
     def link(self):
