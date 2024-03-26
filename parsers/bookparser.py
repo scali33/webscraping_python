@@ -1,3 +1,4 @@
+import re
 from locators.book_atributes import BookAtributeloacator 
 class BookParser:
     RATINGS = {
@@ -32,8 +33,10 @@ class BookParser:
     def price(self):
         locator = BookAtributeloacator.BOOK_PRICE
         price = self.parent.select_one(locator).string
-        price = price.replace('£','')
-        return float(price)
+        pattern = '£([0-9]+\\.[0-9]+)'
+        matcher = re.search(pattern, price)
+        price = float(matcher.group(1))
+        return price
     
     
     @property
