@@ -1,6 +1,8 @@
+import logging
 from main import books
 
 
+loger = logging.getLogger('loggin.menu')
 
 USER_CHOICE = """ Enter one of the following
 -'b' to look at 5-star books
@@ -10,10 +12,12 @@ USER_CHOICE = """ Enter one of the following
 """
 
 def print_best_books():
+    loger.info('printing best books')
     best_books = sorted(books, key=lambda x: x.rating *-1)[:5]
     for book in best_books:
         print(book)
 def prin_cheapest_books():
+    loger.info('printing all cheapests books')
     chep_books = sorted(books, key=lambda x: x.price)[:10]
     for book in chep_books:
         print(book)
@@ -21,6 +25,7 @@ def prin_cheapest_books():
 book_generator = (x for x in books)
 
 def get_next_book():
+    loger.info('getting neext book')
     print(next(book_generator))
 
 option = {
@@ -37,4 +42,4 @@ while True:
         break
     else:
         print('please put the following choices!!! ')
-print('good bye')
+print('good bye') 
